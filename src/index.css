@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  font-family: "Kumbh Sans", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+
+  --color-orange: hsl(26, 100%, 55%);
+  --pale-orange: hsl(25, 100%, 94%);
+  --very-dark-blue: hsl(220, 13%, 13%);
+  --dark-grayish-blue: hsl(219, 9%, 45%);
+  --grayish-blue: hsl(220, 14%, 75%);
+  --light-grayish-blue: hsl(223, 64%, 98%);
+}
+
+.bg-orange {
+  background-color: var(--color-orange);
+}
+.text-orange {
+  color: var(--color-orange);
+}
+.bg-pale-orange {
+  background-color: var(--pale-orange);
+}
+.text-pale-orange {
+  color: var(--pale-orange);
+}
+.bg-verydark-blue {
+  background-color: var(--very-dark-blue);
+}
+.text-verydark-blue {
+  color: var(--very-dark-blue);
+}
+.bg-darkgray-blue {
+  background-color: var(--dark-grayish-blue);
+}
+.text-darkgray-blue {
+  color: var(--dark-grayish-blue);
+}
+.bg-grayish-blue {
+  background-color: var(--grayish-blue);
+}
+.text-grayish-blue {
+  color: var(--grayish-blue);
+}
+.bg-lightgray-blue {
+  background-color: var(--light-grayish-blue);
+}
+.text-lightgray-blue {
+  color: var(--light-grayish-blue);
+}
