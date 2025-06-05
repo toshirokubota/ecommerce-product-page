@@ -35,9 +35,7 @@ export default function ImageSlider({imageNames, shift, imageWidth, setImageWidt
         }
     };
 
-
-
-    console.log('imageSlider: ', shift, imageWidth);
+    //console.log('imageSlider: ', shift, imageWidth);
     return (
         <div ref={ref} 
             className="slider-viewport"

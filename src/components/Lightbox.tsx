@@ -30,7 +30,7 @@ export default function Lightbox({product, show}:
 
     return (
         <div className='lightbox-bg'>
-            <div className='lightbox-fg'>
+            <div className='lightbox-fg' aria-label="Enlarged version of the image">
                 <button onClick={()=>show(false)}
                     aria-label='close the expanded view'>
                     <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">

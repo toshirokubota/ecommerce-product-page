@@ -54,7 +54,10 @@ export default function SamplePage({setCart}:
 
   return (
     <>
-      <div inert={showLightbox} className='main-container'>
+      <div 
+        inert={showLightbox} 
+        aria-hidden={showLightbox}
+        className='main-container'>
         <section className='image-section'>
           <div className='relative'>
             <LeftShifter shift={leftShift}/>

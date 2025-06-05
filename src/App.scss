@@ -141,6 +141,7 @@ header {
 }
 .lightbox-fg {
   width: 80%;
+  overflow: auto;
 }
 .hamburger {
   display: none;
@@ -177,9 +178,6 @@ header {
 .main-container {
   display: flex;
   flex-direction: column;
-  &.disabled {
-    pointer-events: none;
-  }
 
   .image-section {
     display: flex;
