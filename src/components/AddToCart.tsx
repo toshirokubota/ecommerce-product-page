@@ -15,7 +15,6 @@ export default function AddToCart({count, product, setCart, setCount}:
     }
 
     return (
-        // <button className="add-cart w-full bg-orange py-2 mx-4 my-4 rounded-xl flex items-center justify-center">
         <button 
             className="add-cart"
             onClick={addToCart}

@@ -4,7 +4,7 @@ export default function IncDecButton({count, setCount}:
     {count: number, setCount: React.Dispatch<React.SetStateAction<number>> }
 ) {
     return (
-        <div className="bg-lightgray-blue py-2 mx-4 my-4 rounded-xl flex justify-around items-center">
+        <div className="incdec bg-lightgray-blue py-2 mx-4 my-4 rounded-xl flex justify-around items-center">
             <button
                 className='p-2'
                 onClick={()=>{setCount(prev=> prev > 0 ? prev - 1: prev)}}

@@ -1,57 +1,48 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { staticAsset } from "../libs";
 
-export default function ImageSlider({imageNames}: {imageNames: string[]}) {
+export default function ImageSlider({imageNames, shift, imageWidth, setImageWidth, showLightbox}: 
+    {
+        imageNames: string[], shift: number, imageWidth: number,
+        setImageWidth: React.Dispatch<React.SetStateAction<number>>,
+        showLightbox: React.Dispatch<React.SetStateAction<boolean>>
+    }) {
     const ref = useRef<HTMLDivElement>(null);
-    const [width, setWidth] = useState(0);
-    const [shift, setShift] = useState<number>(0);
+    
+    useEffect(() => {
+        const handleResize = () => {
+            if(ref.current){
+                console.log('handleResize: ', ref.current.offsetWidth);
+                setImageWidth(ref.current.offsetWidth);
+            }
+        }
+
+        window.addEventListener("resize", handleResize);
+            
+        return () => window.removeEventListener("resize", handleResize); // Cleanup
+    }, []);
 
     useEffect(() => {
         if (ref.current) {
             console.log('setWidth: ', ref.current.offsetWidth);
-            setWidth(ref.current.offsetWidth);
+            setImageWidth(ref.current.offsetWidth);
         }
     }, []);
 
-    const leftTranslate = () => {
-        if(shift >= width) {
-            setShift(prev => {
-                console.log('leftTranslate:', prev - width);
-                return prev - width
-        });
-        }
-    }
-    const rightTranslate = () => {
-        if(shift < width * (imageNames.length - 1)) {
-            setShift(prev => {
-                console.log('rightTranslate:', prev + width);
-                return prev + width
-        });
-        }
-    }
+    console.log('imageSlider: ', shift, imageWidth);
     return (
         <div ref={ref} className="slider-viewport">
-            <img 
-                className='prev-icon' 
-                src={staticAsset('/images/icon-previous.svg')} 
-                alt='previous button'
-                onClick={leftTranslate}
-                />
-            <div className="slider" style={{transform: `translateX(-${shift}px)`}}>
+            <div className="slider" style={{transform: `translateX(-${shift * imageWidth}px)`}}>
             {
                 imageNames.map(name => (
-                    <picture key={name} className="image-container">
-                        <img src={staticAsset(name)} alt='' />
-                    </picture>
+                    <div key={name} className="slider-container">
+                        <img 
+                            src={staticAsset(name)} alt='' 
+                            onDoubleClick={()=>showLightbox(true)}/>
+                    </div>
                 ))
             }
             </div>
-            <img 
-                className='next-icon' 
-                src={staticAsset('/images/icon-next.svg')} 
-                alt='next button'
-                onClick={rightTranslate}
-            />
         </div>
     )
 }

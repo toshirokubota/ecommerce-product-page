@@ -4,11 +4,11 @@ export default function ThumbnailCard({imageNames, handlers}:
     {imageNames: string[], handlers: React.MouseEventHandler<HTMLButtonElement>[]}) {
 
     return (
-        <div className="flex justify-around items-center">
+        <div className="thumbnail-card">
             {
                 imageNames.map((name, index) => (
-                    <button onClick={handlers[index]}>
-                        <img key={name} src={staticAsset(name)} alt=''/>
+                    <button key={name} onClick={handlers[index]}>
+                        <img src={staticAsset(name)} alt=''/>
                     </button>
                 ))
             }
