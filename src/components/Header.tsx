@@ -37,7 +37,7 @@ export default function Header({items, cartIsShown, showCart, setCart}: {
                             <path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="#000000"/>
                         </svg>
                     </button>
-                    <nav id='dropdown-menu' aria-hidden={`${open ? 'false': 'true'}`}>
+                    <nav id='dropdown-menu'>
                         <ul className="dropdown-menu-list flex flex-col gap-4 mt-8" 
                             onClick={()=>setOpen(false)}>
                             <li className={`${location.pathname==='/collections' ? 'current': ''}`}>
