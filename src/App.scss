@@ -138,9 +138,11 @@ header {
   display: grid;
   place-items: center;
   z-index: 2;
+  //overflow: auto;
 }
 .lightbox-fg {
-  width: 80%;
+  width: 60%;
+  height: 100%;
   overflow: auto;
 }
 .hamburger {
