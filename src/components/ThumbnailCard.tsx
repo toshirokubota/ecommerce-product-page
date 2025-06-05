@@ -7,7 +7,9 @@ export default function ThumbnailCard({imageNames, handlers}:
         <div className="thumbnail-card">
             {
                 imageNames.map((name, index) => (
-                    <button key={name} onClick={handlers[index]}>
+                    <button key={name} onClick={handlers[index]}
+                        aria-label='expand the thumbnail image'
+                    >
                         <img src={staticAsset(name)} alt=''/>
                     </button>
                 ))

@@ -1,10 +1,11 @@
 import { staticAsset } from "../libs";
 import type { CartItemType } from "../types";
 
-export default function Cart({items, setCart, showCart}: 
+export default function Cart({items, setCart, cartIsShown, showCart}: 
         {
             items: CartItemType[], 
             setCart: React.Dispatch<React.SetStateAction<CartItemType[]>>,
+            cartIsShown: boolean,
             showCart: React.Dispatch<React.SetStateAction<boolean>>
         }) {
     const itemCost = (item: CartItemType): string => {
@@ -16,8 +17,16 @@ export default function Cart({items, setCart, showCart}:
     const deleteItem = (item: CartItemType): void => {
         setCart(prev => prev.filter(k => k != item ));
     }
+    const checkOut = (): void => {
+        //simply clear the cart and hide it.
+        showCart(false); 
+        setCart([]);
+    }
     return (
-        <div className='cart-card p-4'>
+        <div className='cart-card p-4' 
+            role='dialog'
+            aria-hidden={`${cartIsShown ? 'false': 'true'}`}
+            >
             <p className="my-4">Cart</p>
             
             <hr className="my-4"></hr>
@@ -33,7 +42,9 @@ export default function Cart({items, setCart, showCart}:
                             <p>{item.product.name}</p>
                             <p>{itemCost(item)} x {item.count} {totalCost(item)}</p>
                         </div>
-                        <button onClick={()=> deleteItem(item)}>
+                        <button 
+                            aria-label="delete item from cart"
+                            onClick={()=> deleteItem(item)}>
                             <img src={staticAsset('/images/icon-delete.svg')} alt='delete'/>
                         </button>
     
@@ -44,7 +55,7 @@ export default function Cart({items, setCart, showCart}:
             {items.length > 0 && 
                 <button 
                     className="w-full bg-orange my-4 px-4 py-2 rounded-xl mx-auto"
-                    onClick={()=>{showCart(false); setCart([]);}}>Checkout
+                    onClick={checkOut}>Checkout
                 </button>
             }
 

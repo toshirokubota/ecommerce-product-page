@@ -22,18 +22,28 @@ main {
   background-color: var(--white);
   overflow: hidden;
 }
+button:hover, button:focus {
+  opacity: 0.5;
+}
+a:hover, a:focus {
+  opacity: 0.5;
+}
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 2.5rem;
-  margin-block: 1rem;
+  height: clamp(2.5rem, 6vw + 22px, 4rem);
+  margin-top: 1rem;
+  margin-bottom: clamp(24px, 10vw - 6px, 96px);
   padding-inline: 1rem;
   padding-bottom: 1rem;
   border-bottom: solid 1pt rgba(100, 100, 100, 0.15);
-  & > img {
-    height: 1.5rem;
+  .avatar-img {
+    height: clamp(1.5rem, 3.6vw + 13.2px, 2.4rem);;
+  }
+  & > div.flex {
+    gap: clamp(0.5rem, 5.3vw, 2rem)
   }
 }
 .slider-viewport {
@@ -130,7 +140,7 @@ header {
   z-index: 2;
 }
 .lightbox-fg {
-  width: 50%;
+  width: 80%;
 }
 .hamburger {
   display: none;
@@ -144,7 +154,7 @@ header {
   width: 150px;
   display: none;
   z-index: 3;
-  .dropdown-menu {
+  .dropdown-menu-list {
     li.current {
       text-decoration: underline solid var(--color-red-500);
     }
@@ -167,6 +177,9 @@ header {
 .main-container {
   display: flex;
   flex-direction: column;
+  &.disabled {
+    pointer-events: none;
+  }
 
   .image-section {
     display: flex;
@@ -176,12 +189,20 @@ header {
     display: flex;
     flex-direction: column;
   }
+  .product-card {
+    h1 {
+      font-size: clamp(28px, 4vw + 16px, 44px);
+    }
+  }
 }
 @media only screen and (min-width: 40rem) {
-  .slider-viewport {
-    height: 50vw;
-    .slider-container {
-      transform: translateY(-25%);
+  .image-section {
+    .slider-viewport {
+      height: 50vw;
+      border-radius: 0.75rem;
+      .slider-container {
+        transform: translateY(-25%);
+      }
     }
   }
   .shop-buttons {
@@ -193,6 +214,15 @@ header {
   }
   .add-cart {
     flex: 1 1 50%;
+  }
+  .product-price {
+    display: block;
+    span:first-child {
+      margin-right: 1rem;
+    }
+    .line-through {
+      display: block;
+    }
   }
 }
 
@@ -211,7 +241,7 @@ header {
     .close-button {
       display: none;
     }
-    .dropdown-menu {
+    .dropdown-menu-list {
       flex-direction: row;
     }
     ul {
@@ -245,11 +275,15 @@ header {
   .thumbnail-card {
     display: flex;
   }
-  .slider-viewport {
-    height: auto;
-    .slider-container {
-      transform: none;
+  .image-section {
+    .slider-viewport {
+      height: auto;
+      .slider-container {
+        transform: none;
+      }
     }
   }
+  .lightbox-fg {
+    width: 60%;
+  }
 }
-

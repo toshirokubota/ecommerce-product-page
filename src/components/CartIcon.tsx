@@ -13,13 +13,14 @@ export default function CartIcon({items, setCart, showCart, cartIsShown}: {
         <div>
             <button className="relative"
                 onClick={() => {showCart(prev => !prev)}}
+                aria-label="open/close the cart"
             >
                 <img src={staticAsset('/images/icon-cart.svg')} alt='shopping cart'/>
                 {count > 0 && 
                     <span className='cart-indicator text-xs text-white'>{count}</span>    
                 }
             </button>
-            {cartIsShown && <Cart items={items} setCart={setCart} showCart={showCart}/>}
+            {cartIsShown && <Cart items={items} setCart={setCart} cartIsShown={cartIsShown} showCart={showCart}/>}
         </div>
     )
 }

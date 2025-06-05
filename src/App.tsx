@@ -18,8 +18,8 @@ function App() {
         <Route path="/collections" element={<SamplePage setCart={setCart}/>} />
         <Route path="/men" element={<SamplePage setCart={setCart}/>} />
         <Route path="/women" element={<SamplePage setCart={setCart}/>} />
-        <Route path="/contact" element={<SamplePage  setCart={setCart}/>} />
-        <Route path="/about" element={<SamplePage  setCart={setCart}/>} />
+        <Route path="/contact" element={<h1 className='w-full text-3xl'>This is the contact page!</h1>} />
+        <Route path="/about" element={<h1 className='w-full text-3xl'>This is the about page!</h1>} />
       </Routes>
     </BrowserRouter>
 

@@ -54,8 +54,7 @@ export default function SamplePage({setCart}:
 
   return (
     <>
-      {/* <Header items={cart} showCart={setShowCart} cartIsShown={showCart} setCart={setCart}/> */}
-      <div className='main-container'>
+      <div inert={showLightbox} className='main-container'>
         <section className='image-section'>
           <div className='relative'>
             <LeftShifter shift={leftShift}/>
